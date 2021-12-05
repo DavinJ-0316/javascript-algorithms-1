@@ -7,6 +7,12 @@ export default class LinkedList {
     this.#length = 0;
   }
 
+  peek() {
+    if (this.isEmpty()) return null;
+    
+    return this.#head.value;
+  }
+
   prepend(value) {
 		if (this.isEmpty()) {
 			this.#head = this.#tail = new LinkedNode(value);
