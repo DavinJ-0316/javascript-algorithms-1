@@ -2,16 +2,16 @@ import LinkedListNode from './LinkedListNode';
 
 export default class LinkedList {
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this.#head = null;
+    this.#tail = null;
     this.#length = 0;
   }
 
   prepend(value) {
 		if (this.isEmpty()) {
-			this.head = this.tail = new LinkedNode(value);
+			this.#head = this.#tail = new LinkedNode(value);
 		} else {
-			this.head = new LinkedNode(value, this.head);
+			this.#head = new LinkedNode(value, this.#head);
 		}
 		this.#length++;
 
@@ -21,10 +21,10 @@ export default class LinkedList {
   append(value) {
     const node = new LinkedNode(value);
     if (this.isEmpty()) {
-			this.head = this.tail = node;
+			this.#head = this.#tail = node;
 		} else {
-			this.tail.next = node;
-			this.tail = node;
+			this.#tail.next = node;
+			this.#tail = node;
 		}
 		this.#length++;
 
@@ -37,9 +37,9 @@ export default class LinkedList {
     let deletedNode = null;
 
 		if (this.size() === 1) {
-			this.head = this.tail = null;
+			this.#head = this.#tail = null;
 		} else {
-			let current = this.head;
+			let current = this.#head;
 			while(current.next) {
 				if (current.next.value === value) {
           deletedNode = current.next;
@@ -57,7 +57,7 @@ export default class LinkedList {
   find(value) {
 		if (this.isEmpty()) return null;
 
-		let current = this.head;
+		let current = this.#head;
 		while(current) {
 			if (current.value === value) {
 				return current;
@@ -70,19 +70,19 @@ export default class LinkedList {
   deleteTail() {
     if (this.isEmpty()) return;
 
-    const deletedTail = this.tail;
+    const deletedTail = this.#tail;
 
-    if (this.head === this.tail) {
-      this.head = this.tail = null;
+    if (this.#head === this.#tail) {
+      this.#head = this.#tail = null;
 
       return deletedTail;
     } else {
-      let current = this.head;
-			while(current.next !== this.tail) {
+      let current = this.#head;
+			while(current.next !== this.#tail) {
 				current = current.next;
 			}
 			current.next = null;
-			this.tail = current;
+			this.#tail = current;
     }
     this.#length--;
 
@@ -92,12 +92,12 @@ export default class LinkedList {
   deleteHead() {
     if (this.isEmpty()) return null;
 
-    const deletedHead = this.head;
+    const deletedHead = this.#head;
 
-    if (this.head.next) {
-      this.head = this.head.next;
+    if (this.#head.next) {
+      this.#head = this.#head.next;
     } else {
-      this.head = this.tail = null;
+      this.#head = this.#tail = null;
     }
     this.#length--;
 
@@ -113,7 +113,7 @@ export default class LinkedList {
   toArray() {
     const nodes = [];
 
-    let currentNode = this.head;
+    let currentNode = this.#head;
     while (currentNode) {
       nodes.push(currentNode);
       currentNode = currentNode.next;
