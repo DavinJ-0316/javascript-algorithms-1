@@ -60,17 +60,23 @@ export default class LinkedList {
     return deletedNode;
   }
 
-  find(value) {
-		if (this.isEmpty()) return null;
+  find({ value = undefined, callback = undefined }) {
+    if (this.isEmpty()) return null;
 
-		let current = this.#head;
-		while(current) {
-			if (current.value === value) {
-				return current;
-			}
-			current = current.next;
-		}
-		return null;
+    let currentNode = this.#head;
+
+    while (currentNode) {
+      if (
+        (callback && callback(currentNode.value))
+        || (value && currentNode.value === value)
+      ) {
+        return currentNode;
+      }
+
+      currentNode = currentNode.next;
+    }
+
+    return null;
   }
 
   deleteTail() {
