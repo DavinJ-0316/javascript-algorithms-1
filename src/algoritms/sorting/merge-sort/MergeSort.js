@@ -12,7 +12,7 @@ function merge(firstArray, secondArray) {
   return [...sortedArray, ...firstArray.slice(i), ...secondArray.slice(j)];
 }
 
-function mergeSort(array) {
+export function mergeSort(array) {
   if (array.length === 1) return array;
 
   const middle = Math.floor(array.length / 2);
