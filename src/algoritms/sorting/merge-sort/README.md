@@ -11,7 +11,10 @@ mergesort) - эффективный, универсальный,
 Пример сортировки слиянием. Сначала разделите список на
 наименьший блок (1 элемент), затем сравните каждый
 элемент со смежным списком, чтобы отсортировать и объединить
-два соседних списка. Наконец все элементы отсортированы. 
+два соседних списка. Наконец все элементы отсортированы.
+
+![Algorithm Visualization](https://media.proglib.io/posts/2021/09/29/83b221f5ec38fa1aa3f940df95100179.gif)
+![Algorithm Visualization](https://media.proglib.io/posts/2021/09/29/b3a3799f0e171f1fe85b2af7ea7a2836.gif)
 
 ![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 

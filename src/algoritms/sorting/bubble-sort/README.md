@@ -3,6 +3,7 @@
 Пузырьковая сортировка, иногда называемая сортировкой по убыванию, представляет собой простой алгоритм сортировки, который многократно проходит по списку для сортировки, сравнивает каждую пару соседних элементов и меняет их местами, если они расположены в неправильном порядке (по возрастанию или по убыванию).
 
 ![Algorithm Visualization](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
+![Algorithm Visualization](https://media.proglib.io/posts/2021/09/29/745fc0585cd89a40e4ff8c562483b9a6.gif)
 
 ## Complexity
 

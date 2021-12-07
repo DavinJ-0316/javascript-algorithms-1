@@ -1,148 +1,116 @@
 import LinkedListNode from './LinkedListNode';
 
-export default class LinkedList {
-  constructor() {
-    this.#head = null;
-    this.#tail = null;
-    this.#length = 0;
+class LinkedList {
+  constructor(comparator) {
+  	this.#head = null;
+  	this.#tail = null;
+  	this.comparator = 
+  	  comparator || 
+  	  function (a, b) {
+  	  	if (a < b) return -1;
+  	  	if (a > b) return 1;
+  	  	return 0;
+  	  }
   }
 
   peek() {
-    if (this.isEmpty()) return null;
-    
-    return this.#head.value;
+  	return this.#head.value;
   }
 
   prepend(value) {
-		if (this.isEmpty()) {
-			this.#head = this.#tail = new LinkedNode(value);
-		} else {
-			this.#head = new LinkedNode(value, this.#head);
-		}
-		this.#length++;
-
-    return this;
+  	const newNode = new LinkedNode(value, this.#head);
+  	this.#head = newNode;
+  	if (!this.#tail) this.#tail = newNode;
   }
 
   append(value) {
-    const node = new LinkedNode(value);
-    if (this.isEmpty()) {
-			this.#head = this.#tail = node;
-		} else {
-			this.#tail.next = node;
-			this.#tail = node;
-		}
-		this.#length++;
-
-    return this;
+  	const newNode = new LinkedNode(value);
+  	if (this.#tail) this.#tail.next = newNode;
+  	this.#tail = newNode;
+  	if (!this.#head) this.#head = newNode;
   }
 
-  remove(value) {
-    if (this.isEmpty()) return null;
+  delete(value) {
+  	if (!this.#head) return;
 
-    let deletedNode = null;
+  	while (this.#head && this.comparator(this.head.value, value) === 0) {
+  	  this.#head = this.#head.next;
+  	}
+  	
+  	let current = this.#head;
+  	if (current !== null) {
+  	  while (current.next) {
+  	  	if (this.comparator(current.next.value, value) === 0) {
+  	  	  current.next = current.next.next;
+  	  	} else {
+  	  	  current = current.next;	
+  	  	}
+  	  }
+  	}
 
-		if (this.size() === 1) {
-			this.#head = this.#tail = null;
-		} else {
-			let current = this.#head;
-			while(current.next) {
-				if (current.next.value === value) {
-          deletedNode = current.next;
-					current.next = current.next.next;
-				} else {
-					current = current.next;
-				}
-			}
-		}
-    this.#length--;
-
-    return deletedNode;
-  }
-
-  find({ value = undefined, callback = undefined }) {
-    if (this.isEmpty()) return null;
-
-    let currentNode = this.#head;
-
-    while (currentNode) {
-      if (
-        (callback && callback(currentNode.value))
-        || (value && currentNode.value === value)
-      ) {
-        return currentNode;
-      }
-
-      currentNode = currentNode.next;
-    }
-
-    return null;
-  }
-
-  deleteTail() {
-    if (this.isEmpty()) return;
-
-    const deletedTail = this.#tail;
-
-    if (this.#head === this.#tail) {
-      this.#head = this.#tail = null;
-
-      return deletedTail;
-    } else {
-      let current = this.#head;
-			while(current.next !== this.#tail) {
-				current = current.next;
-			}
-			current.next = null;
-			this.#tail = current;
-    }
-    this.#length--;
-
-    return deletedTail;
+  	if (this.comparator(this.#tail.value, value) === 0) {
+  		this.#tail = current;
+  	}
   }
 
   deleteHead() {
-    if (this.isEmpty()) return null;
+  	if (!this.#head) return null;
+  	let deleteHead = this.#head;
 
-    const deletedHead = this.#head;
+  	if (this.#head.next) {
+  	  this.#head = this.#head.next;
+  	} else {
+  		this.#head = this.#tail = null;
+  	}
 
-    if (this.#head.next) {
-      this.#head = this.#head.next;
-    } else {
-      this.#head = this.#tail = null;
-    }
-    this.#length--;
-
-    return deletedHead;
+  	return deleteHead;
   }
 
-  fromArray(values) {
-    values.forEach((value) => this.append(value));
+  deleteTail() {
+  	const deletetail = this.#tail;
+  	if (this.#head === this.#tail) {
+  	  this.#head = this.#tail = null;
+  	  return deleteTail;
+  	}
 
-    return this;
+  	let current = this.#head;
+  	while (current.next) {
+  	  if (!current.next.next) {
+  	  	current.next = null;
+  	  } else {
+  	  	current = current.next;
+  	  }
+  	}
+
+  	this.#tail = current;
+  	return deleteTail;
   }
 
-  toArray() {
-    const nodes = [];
+  find(value) {
+  	if (!this.#head) return null;
 
-    let currentNode = this.#head;
-    while (currentNode) {
-      nodes.push(currentNode);
-      currentNode = currentNode.next;
-    }
+  	let current = this.#head;
+  	while (current) {
+  	  if (this.comparator(current.value, value) === 0) {
+  	  	return current;
+  	  }
+  	  current = current.next;
+  	}
 
-    return nodes;
+  	return null;
   }
 
-  toString(callback) {
-    return this.toArray().map((node) => node.toString(callback)).toString();
+  forEach(callback) {
+  	let current = this.#head;
+  	while (current) {
+  	  callback(current.value);
+  	  current = current.next;
+  	}
   }
 
   isEmpty() {
-		return this.#length === 0;
-	}
-
-	size() {
-		return this.#length;
-	}
+  	return !this.#head;
+  }
 }
+
+export default LinkedList;

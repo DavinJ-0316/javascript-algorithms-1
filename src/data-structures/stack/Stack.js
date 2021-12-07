@@ -1,6 +1,6 @@
 import LinkedList from '../linked-list/LinkedList';
 
-export default class Stack {
+class Stack {
   constructor() {
     this.#linkedList = new LinkedList();
   }
@@ -21,14 +21,6 @@ export default class Stack {
     const removedHead = this.#linkedList.deleteHead();
     return removedHead ? removedHead.value : null;
   }
-
-  toArray() {
-    return this.#linkedList
-      .toArray()
-      .map((linkedListNode) => linkedListNode.value);
-  }
-
-  toString(callback) {
-    return this.#linkedList.toString(callback);
-  }
 }
+
+export default Stack;
