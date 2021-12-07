@@ -1,0 +1,30 @@
+# Tree
+
+* [Binary Search Tree](binary-search-tree)
+* [AVL Tree](avl-tree)
+* [Red-Black Tree](red-black-tree)
+* [Segment Tree](segment-tree) - with min/max/sum range queries examples
+* [Fenwick Tree](fenwick-tree) (Binary Indexed Tree)
+
+В информатике ** дерево ** - широко используемый абстрактный тип данных,
+который имитирует иерархическую древовидную структуру с корневым значением
+и поддеревьями потомков с родительским узлом, представленные как
+набор связанных узлов.
+
+Древовидная структура данных может быть определена рекурсивно (локально)
+как набор узлов (начиная с корневого узла), где
+каждый узел - это структура данных, состоящая из значения,
+вместе со списком ссылок на узлы («потомки»),
+с ограничениями, что ни одна ссылка не дублируется, и ни одна
+указывает на корень.
+
+Простое неупорядоченное дерево; на этой диаграмме узел с меткой 7 имеет
+двое детей с метками 2 и 6 и один родитель с меткой 2.
+корневой узел наверху не имеет родителя.
+
+![Tree](https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_tree.svg)
+
+## References
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Tree_(data_structure))
+- [YouTube](https://www.youtube.com/watch?v=oSWTXtMglKE&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8&index=8)
