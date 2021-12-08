@@ -18,13 +18,13 @@ class LinkedList {
   }
 
   prepend(value) {
-  	const newNode = new LinkedNode(value, this.#head);
+  	const newNode = new LinkedListNode(value, this.#head);
   	this.#head = newNode;
   	if (!this.#tail) this.#tail = newNode;
   }
 
   append(value) {
-  	const newNode = new LinkedNode(value);
+  	const newNode = new LinkedListNode(value);
   	if (this.#tail) this.#tail.next = newNode;
   	this.#tail = newNode;
   	if (!this.#head) this.#head = newNode;
