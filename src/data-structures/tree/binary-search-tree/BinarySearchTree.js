@@ -1,4 +1,4 @@
-import BinarySearchTreeNode from "./BinarySearchTreeNode";
+import BinarySearchTreeNode from './BinarySearchTreeNode';
 
 export default class BinarySearchTree {
   constructor(value, comparator) {
@@ -29,9 +29,7 @@ export default class BinarySearchTree {
       } else {
         nodeToRemove.value = undefined;
       }
-    }
-
-    else if (nodeToRemove.left && nodeToRemove.right) {
+    } else if (nodeToRemove.left && nodeToRemove.right) {
       const nextBiggerNode = nodeToRemove.right.findMin();
       if (this.comparator(nextBiggerNode, nodeToRemove.right) === 0) {
         nodeToRemove.value = nodeToRemove.right.value;
@@ -40,9 +38,7 @@ export default class BinarySearchTree {
         this.remove(nextBiggerNode.value);
         nodeToRemove.value = nextBiggerNode.value;
       }
-    }
-
-    else {
+    } else {
       const childNode = nodeToRemove.left || nodeToRemove.right;
       if (parent) {
         parent.replaceChild(nodeToRemove, childNode);

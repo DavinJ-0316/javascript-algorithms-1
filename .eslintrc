@@ -1,0 +1,12 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "ignorePatterns": "**/*.md",
+  "extends": ["eslint:recommended", "google"],
+  "rules": {
+    "require-jsdoc": "off",
+    "object-curly-spacing": "off"
+  }
+}

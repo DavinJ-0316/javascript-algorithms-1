@@ -1,11 +1,11 @@
 function merge(firstArray, secondArray) {
   const sortedArray = [];
-  let i = 0, j = 0;
+  let i = 0; let j = 0;
 
   while (i < firstArray.length && j < secondArray.length) {
     sortedArray.push(
       firstArray[i] < secondArray[j] ?
-      firstArray[i++] : secondArray[j++]
+      firstArray[i++] : secondArray[j++],
     );
   }
 

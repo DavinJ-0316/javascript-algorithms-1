@@ -1,4 +1,4 @@
-function traverseDFRecursive(node, callback) {
+export function traverseDFRecursive(node, callback) {
   callback(node);
 
   if (node.left) {

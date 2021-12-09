@@ -7,8 +7,8 @@ export default class BinaryTreeNode {
   }
 
   get height() {
-    let leftHeight = this.left ? this.left.height + 1 : 0;
-    let rightHeight = this.right ? this.right.height + 1 : 0;
+    const leftHeight = this.left ? this.left.height + 1 : 0;
+    const rightHeight = this.right ? this.right.height + 1 : 0;
     return Math.max(leftHeight, rightHeight);
   }
 
