@@ -5,10 +5,10 @@ function partition(array, start, end) {
 
   while (comparator(start, end) <= 0) {
     while (comparator(array[start], pivot) < 0) {
-      left++;
+      start++;
     }
     while (comparator(array[end], pivot) > 0) {
-      rigth--;
+      end--;
     }
     if (comparator(start, end) <= 0) {
       swap(array, start, end);
@@ -20,9 +20,9 @@ function partition(array, start, end) {
 
 export function quickSort(array, left, right) {
   if (array.length > 1) {
-    let index = partition(array, left, right);
+    const index = partition(array, left, right);
     if (comparator(left, index - 1) < 0) {
-      quickSort(array, left, index - 1); 
+      quickSort(array, left, index - 1);
     }
     if (comparator(index, right) < 0) {
       quickSort(array, index, right);

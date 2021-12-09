@@ -14,7 +14,7 @@ export function countingSort(array) {
 
   array.length = 0;
   for (let i = 0; i < bucket.length; i++) {
-    let count = bucket[i];
+    const count = bucket[i];
     for (let j = 0; j < count; j++) {
       array.push(i + minimum);
     }
