@@ -2,19 +2,19 @@ import LinkedList from '../linked-list/LinkedList';
 
 export default class Queue {
   constructor() {
-    this.#linkedList = new LinkedList();
+    this.linkedList = new LinkedList();
   }
 
   isEmpty() {
-    return this.#linkedList.isEmpty();
+    return this.linkedList.isEmpty();
   }
 
   enqueue(value) {
-    this.#linkedList.append(value);
+    this.linkedList.append(value);
   }
 
   dequeue() {
-    const removedHead = this.#linkedList.deleteHead();
+    const removedHead = this.linkedList.deleteHead();
     return removedHead ? removedHead.value : null;
   }
 }

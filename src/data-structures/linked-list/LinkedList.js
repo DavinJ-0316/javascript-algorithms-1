@@ -1,43 +1,37 @@
 import LinkedListNode from './LinkedListNode';
 
-class LinkedList {
+export default class LinkedList {
   constructor(comparator) {
-  	this.#head = null;
-  	this.#tail = null;
-  	this.comparator = 
-  	  comparator || 
-  	  function (a, b) {
-  	  	if (a < b) return -1;
-  	  	if (a > b) return 1;
-  	  	return 0;
-  	  }
+  	this.head = null;
+  	this.tail = null;
+  	this.comparator = comparator;
   }
 
   peek() {
-  	return this.#head.value;
+  	return this.head.value;
   }
 
   prepend(value) {
-  	const newNode = new LinkedListNode(value, this.#head);
-  	this.#head = newNode;
-  	if (!this.#tail) this.#tail = newNode;
+  	const newNode = new LinkedListNode(value, this.head);
+  	this.head = newNode;
+  	if (!this.tail) this.tail = newNode;
   }
 
   append(value) {
   	const newNode = new LinkedListNode(value);
-  	if (this.#tail) this.#tail.next = newNode;
-  	this.#tail = newNode;
-  	if (!this.#head) this.#head = newNode;
+  	if (this.tail) this.tail.next = newNode;
+  	this.tail = newNode;
+  	if (!this.head) this.head = newNode;
   }
 
   delete(value) {
-  	if (!this.#head) return;
+  	if (!this.head) return;
 
-  	while (this.#head && this.comparator(this.head.value, value) === 0) {
-  	  this.#head = this.#head.next;
+  	while (this.head && this.comparator(this.head.value, value) === 0) {
+  	  this.head = this.head.next;
   	}
   	
-  	let current = this.#head;
+  	let current = this.head;
   	if (current !== null) {
   	  while (current.next) {
   	  	if (this.comparator(current.next.value, value) === 0) {
@@ -48,32 +42,32 @@ class LinkedList {
   	  }
   	}
 
-  	if (this.comparator(this.#tail.value, value) === 0) {
-  		this.#tail = current;
+  	if (this.comparator(this.tail.value, value) === 0) {
+  		this.tail = current;
   	}
   }
 
   deleteHead() {
-  	if (!this.#head) return null;
-  	let deleteHead = this.#head;
+  	if (!this.head) return null;
+  	let deleteHead = this.head;
 
-  	if (this.#head.next) {
-  	  this.#head = this.#head.next;
+  	if (this.head.next) {
+  	  this.head = this.head.next;
   	} else {
-  		this.#head = this.#tail = null;
+  		this.head = this.tail = null;
   	}
 
   	return deleteHead;
   }
 
   deleteTail() {
-  	const deletetail = this.#tail;
-  	if (this.#head === this.#tail) {
-  	  this.#head = this.#tail = null;
+  	const deleteTail = this.tail;
+  	if (this.head === this.tail) {
+  	  this.head = this.tail = null;
   	  return deleteTail;
   	}
 
-  	let current = this.#head;
+  	let current = this.head;
   	while (current.next) {
   	  if (!current.next.next) {
   	  	current.next = null;
@@ -82,14 +76,14 @@ class LinkedList {
   	  }
   	}
 
-  	this.#tail = current;
+  	this.tail = current;
   	return deleteTail;
   }
 
   find(value) {
-  	if (!this.#head) return null;
+  	if (!this.head) return null;
 
-  	let current = this.#head;
+  	let current = this.head;
   	while (current) {
   	  if (this.comparator(current.value, value) === 0) {
   	  	return current;
@@ -101,16 +95,26 @@ class LinkedList {
   }
 
   forEach(callback) {
-  	let current = this.#head;
+  	let current = this.head;
   	while (current) {
   	  callback(current.value);
   	  current = current.next;
   	}
   }
 
+	toArray() {
+		const nodes = [];
+
+		let currentNode = this.head;
+		while (currentNode) {
+			nodes.push(currentNode);
+			currentNode = currentNode.next;
+		}
+
+		return nodes;
+	}
+
   isEmpty() {
-  	return !this.#head;
+  	return !this.head;
   }
 }
-
-export default LinkedList;

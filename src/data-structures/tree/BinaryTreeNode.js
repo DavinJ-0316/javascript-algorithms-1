@@ -1,4 +1,4 @@
-class BinaryTreeNode {
+export default class BinaryTreeNode {
   constructor(value = null) {
     this.left = null;
     this.right = null;
@@ -6,7 +6,6 @@ class BinaryTreeNode {
     this.value = value;
   }
 
-  
   get height() {
     let leftHeight = this.left ? this.left.height + 1 : 0;
     let rightHeight = this.right ? this.right.height + 1 : 0;

@@ -1,26 +1,24 @@
 import LinkedList from '../linked-list/LinkedList';
 
-class Stack {
+export default class Stack {
   constructor() {
-    this.#linkedList = new LinkedList();
+    this.linkedList = new LinkedList();
   }
 
   isEmpty() {
-    return this.#linkedList.isEmpty();
+    return this.linkedList.isEmpty();
   }
 
   peek() {
-    return this.#linkedList.peek();
+    return this.linkedList.peek();
   }
 
   push(value) {
-    this.#linkedList.prepend(value);
+    this.linkedList.prepend(value);
   }
 
   pop() {
-    const removedHead = this.#linkedList.deleteHead();
+    const removedHead = this.linkedList.deleteHead();
     return removedHead ? removedHead.value : null;
   }
 }
-
-export default Stack;
