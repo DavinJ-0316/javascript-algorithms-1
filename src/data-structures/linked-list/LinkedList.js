@@ -80,11 +80,14 @@ export default class LinkedList {
     return deleteTail;
   }
 
-  find(value) {
+  find({ value = undefined, callback = undefined }) {
     if (!this.head) return null;
 
     let current = this.head;
     while (current) {
+      if (callback && callback(current.value)) {
+        return current;
+      }
       if (this.comparator(current.value, value) === 0) {
         return current;
       }
@@ -116,5 +119,9 @@ export default class LinkedList {
 
   isEmpty() {
     return !this.head;
+  }
+
+  toString(callback) {
+    return this.toArray().map((node) => node.toString(callback)).toString();
   }
 }
