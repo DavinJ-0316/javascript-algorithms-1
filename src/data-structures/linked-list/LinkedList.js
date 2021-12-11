@@ -117,4 +117,8 @@ export default class LinkedList {
   isEmpty() {
     return !this.head;
   }
+
+  toString(callback) {
+    return this.toArray().map((node) => node.toString(callback)).toString();
+  }
 }
