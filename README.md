@@ -11,6 +11,7 @@
 `B` - Базовый уровень, `A` - Продвинутый уровень
 
 * `B` [Связный список](src/data-structures/linked-list)
+* `B` [Двунаправленный связный список](src/data-structures/doubly-linked-list)
 * `B` [Очередь](src/data-structures/queue)
 * `B` [Стек](src/data-structures/stack)
 * `A` [Деревья](src/data-structures/tree)
