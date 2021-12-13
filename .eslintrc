@@ -23,6 +23,7 @@
     "linebreak-style": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "no-unused-vars": "off"
   }
 }

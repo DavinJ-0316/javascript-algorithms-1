@@ -1,31 +1,40 @@
 import LinkedListNode from './LinkedListNode';
+import {
+  ILinkedList,
+  ILinkedListNode,
+  LinkedListComparator,
+  ILinkedListFindArgument,
+  LinkedListCallback,
+  LinkedListFindCallback,
+} from '../../types/linked-list';
 
-export default class LinkedList {
-  constructor(comparator) {
-    this.head = null;
-    this.tail = null;
+export default class LinkedList<T> implements ILinkedList<T> {
+  private head: ILinkedListNode<T> | null = null;
+  private tail: ILinkedListNode<T> | null = null;
+  private readonly comparator: LinkedListComparator<T>;
+
+  constructor(comparator: LinkedListComparator<T>) {
     this.comparator = comparator;
-    console.log('sdfsf')
   }
 
-  peek() {
-    return this.head.value;
+  public peek(): T | null {
+    return this.head ? this.head.value : null;
   }
 
-  prepend(value) {
+  public prepend(value: T): void {
     const newNode = new LinkedListNode(value, this.head);
     this.head = newNode;
     if (!this.tail) this.tail = newNode;
   }
 
-  append(value) {
+  public append(value: T): void {
     const newNode = new LinkedListNode(value);
     if (this.tail) this.tail.next = newNode;
     this.tail = newNode;
     if (!this.head) this.head = newNode;
   }
 
-  delete(value) {
+  public delete(value: T): void {
     if (!this.head) return;
 
     while (this.head && this.comparator(this.head.value, value) === 0) {
@@ -43,33 +52,36 @@ export default class LinkedList {
       }
     }
 
-    if (this.comparator(this.tail.value, value) === 0) {
+    if (this.tail && this.comparator(this.tail.value, value) === 0) {
       this.tail = current;
     }
   }
 
-  deleteHead() {
+  public deleteHead(): ILinkedListNode<T> | null {
     if (!this.head) return null;
     const deleteHead = this.head;
 
     if (this.head.next) {
       this.head = this.head.next;
     } else {
-      this.head = this.tail = null;
+      this.head = null;
+      this.tail = null;
     }
 
     return deleteHead;
   }
 
-  deleteTail() {
+  public deleteTail(): ILinkedListNode<T> | null {
     const deleteTail = this.tail;
     if (this.head === this.tail) {
-      this.head = this.tail = null;
+      this.head = null;
+      this.tail = null;
+
       return deleteTail;
     }
 
     let current = this.head;
-    while (current.next) {
+    while (current?.next) {
       if (!current.next.next) {
         current.next = null;
       } else {
@@ -81,15 +93,15 @@ export default class LinkedList {
     return deleteTail;
   }
 
-  find({ value = undefined, callback = undefined }) {
+  public find(args: ILinkedListFindArgument<T>): ILinkedListNode<T> | null {
     if (!this.head) return null;
 
-    let current = this.head;
+    let current: ILinkedListNode<T> | null = this.head;
     while (current) {
-      if (callback && callback(current.value)) {
+      if (args.callback && args.callback(current.value)) {
         return current;
       }
-      if (this.comparator(current.value, value) === 0) {
+      if (args.value && this.comparator(current.value, args.value) === 0) {
         return current;
       }
       current = current.next;
@@ -98,7 +110,7 @@ export default class LinkedList {
     return null;
   }
 
-  forEach(callback) {
+  public forEach(callback: LinkedListFindCallback<T>): void {
     let current = this.head;
     while (current) {
       callback(current.value);
@@ -106,8 +118,8 @@ export default class LinkedList {
     }
   }
 
-  toArray() {
-    const nodes = [];
+  public toArray(): Array<ILinkedListNode<T>> {
+    const nodes: Array<ILinkedListNode<T>> = [];
 
     let currentNode = this.head;
     while (currentNode) {
@@ -118,11 +130,11 @@ export default class LinkedList {
     return nodes;
   }
 
-  isEmpty() {
+  public isEmpty(): boolean {
     return !this.head;
   }
 
-  toString(callback) {
+  public toString(callback?: LinkedListCallback<T>): string {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 }
