@@ -13,6 +13,7 @@ export default class LinkedList<T> implements ILinkedList<T> {
   private tail: ILinkedListNode<T> | null = null;
   private readonly comparator: LinkedListComparator<T>;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(comparator: LinkedListComparator<T> = (a: any, b: any) => a - b) {
     this.comparator = comparator;
   }

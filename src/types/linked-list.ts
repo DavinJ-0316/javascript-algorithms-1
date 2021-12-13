@@ -4,7 +4,8 @@ export type LinkedListFindCallback<T> = (value: T) => void;
 
 export interface ILinkedListFindArgument<T> {
   value?: T;
-  callback?: (value: T) => boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  callback?: any;
 }
 
 export interface ILinkedListNode<T> {
