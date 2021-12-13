@@ -1,41 +1,48 @@
+import { IDoublyLinkedList, IDoublyLinkedListNode } from '../../types/doubly-linked-list';
+import {
+  ILinkedListFindArgument,
+  LinkedListCallback,
+  LinkedListComparator,
+  LinkedListFindCallback,
+} from '../../types/linked-list';
 import DoublyLinkedListNode from './DoublyLinkedListNode';
 
-export default class DoublyLinkedList {
-  constructor(comparator) {
-    this.head = null;
-    this.tail = null;
+export default class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
+  private head: IDoublyLinkedListNode<T> | null = null;
+  private tail: IDoublyLinkedListNode<T> | null = null;
+  private readonly comparator: LinkedListComparator<T>;
+
+  constructor(comparator: LinkedListComparator<T>) {
     this.comparator = comparator;
   }
 
-  peek() {
-    return this.head.value;
+  public peek(): T | null {
+    return this.head ? this.head.value : null;
   }
 
-  prepend(value) {
+  public prepend(value: T): void {
     const newNode = new DoublyLinkedListNode(value, this.head);
     if (this.head) this.head.previous = newNode;
     this.head = newNode;
     if (!this.tail) this.tail = newNode;
-    return this;
   }
 
-  append(value) {
+  public append(value: T): void {
     const newNode = new DoublyLinkedListNode(value);
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-      return this;
+      return;
     }
-    this.tail.next = newNode;
+    (this.tail as IDoublyLinkedListNode<T>).next = newNode;
     newNode.previous = this.tail;
     this.tail = newNode;
-    return this;
   }
 
-  delete(value) {
-    if (!this.head) return null;
+  public delete(value: T): void {
+    if (!this.head) return;
     let deletedNode = null;
-    let currentNode = this.head;
+    let currentNode: IDoublyLinkedListNode<T> | null = this.head;
 
     while (currentNode) {
       if (this.comparator(currentNode.value, value) === 0) {
@@ -50,27 +57,26 @@ export default class DoublyLinkedList {
           }
         } else if (deletedNode === this.tail) {
           this.tail = deletedNode.previous;
-          this.tail.next = null;
+          (this.tail as IDoublyLinkedListNode<T>).next = null;
         } else {
           const previousNode = deletedNode.previous;
           const nextNode = deletedNode.next;
-          previousNode.next = nextNode;
-          nextNode.previous = previousNode;
+          (previousNode as IDoublyLinkedListNode<T>).next = nextNode;
+          (nextNode as IDoublyLinkedListNode<T>).previous = previousNode;
         }
       }
       currentNode = currentNode.next;
     }
-    return deletedNode;
   }
 
-  find({ value = undefined, callback = undefined }) {
+  public find(args: ILinkedListFindArgument<T>): IDoublyLinkedListNode<T> | null {
     if (!this.head) return null;
-    let currentNode = this.head;
+    let currentNode: IDoublyLinkedListNode<T> | null = this.head;
     while (currentNode) {
-      if (callback && callback(currentNode.value)) {
+      if (args.callback && args.callback(currentNode.value)) {
         return currentNode;
       }
-      if (this.comparator(currentNode.value, value) === 0) {
+      if (args.value && this.comparator(currentNode.value, args.value) === 0) {
         return currentNode;
       }
       currentNode = currentNode.next;
@@ -78,7 +84,7 @@ export default class DoublyLinkedList {
     return null;
   }
 
-  deleteTail() {
+  public deleteTail(): IDoublyLinkedListNode<T> | null {
     if (!this.tail) return null;
     if (this.head === this.tail) {
       const deletedTail = this.tail;
@@ -88,11 +94,11 @@ export default class DoublyLinkedList {
     }
     const deletedTail = this.tail;
     this.tail = this.tail.previous;
-    this.tail.next = null;
+    (this.tail as IDoublyLinkedListNode<T>).next = null;
     return deletedTail;
   }
 
-  deleteHead() {
+  public deleteHead(): IDoublyLinkedListNode<T> | null {
     if (!this.head) return null;
     const deletedHead = this.head;
     if (this.head.next) {
@@ -105,7 +111,15 @@ export default class DoublyLinkedList {
     return deletedHead;
   }
 
-  toArray() {
+  public forEach(callback: LinkedListFindCallback<T>): void {
+    let current = this.head;
+    while (current) {
+      callback(current.value);
+      current = current.next;
+    }
+  }
+
+  public toArray(): Array<IDoublyLinkedListNode<T>> {
     const nodes = [];
     let currentNode = this.head;
     while (currentNode) {
@@ -115,12 +129,11 @@ export default class DoublyLinkedList {
     return nodes;
   }
 
-  fromArray(values) {
-    values.forEach((value) => this.append(value));
-    return this;
+  public isEmpty(): boolean {
+    return !this.head;
   }
 
-  toString(callback) {
+  public toString(callback?: LinkedListCallback<T>) {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 }

@@ -9,7 +9,7 @@ export default class LinkedListNode<T> implements ILinkedListNode<T> {
     this.next = next;
   }
 
-  toString(callback?: LinkedListCallback<T>) {
+  public toString(callback?: LinkedListCallback<T>): string {
     return callback ? callback(this.value) : `${this.value}`;
   }
 }
