@@ -1,13 +1,17 @@
+import { IComparator } from '../../../types';
 import BinaryTreeNode from '../BinaryTreeNode';
+import { comparator as utilsComparator } from '../../../utils';
 
-export default class BinarySearchTreeNode extends BinaryTreeNode {
-  constructor(value, comparator) {
+export default class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
+  private readonly comparator: IComparator<T>;
+
+  constructor(value: T | null, comparator = utilsComparator) {
     super(value);
     this.comparator = comparator;
   }
 
-  insert(value) {
-    if (this.comparator(value, this.value) < 0) {
+  public insert(value: T): BinarySearchTreeNode<T> | this {
+    if (this.comparator(value, this.value as T) < 0) {
       if (this.left) return this.left.insert(value);
       const newNode = new BinarySearchTreeNode(value, this.comparator);
       this.setLeft(newNode);

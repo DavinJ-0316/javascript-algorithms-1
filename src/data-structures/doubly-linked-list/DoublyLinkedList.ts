@@ -1,18 +1,14 @@
+import { BaseCallback, CallbackArgs, IComparator } from '../../types';
 import { IDoublyLinkedList, IDoublyLinkedListNode } from '../../types/doubly-linked-list';
-import {
-  ILinkedListFindArgument,
-  LinkedListCallback,
-  LinkedListComparator,
-  LinkedListFindCallback,
-} from '../../types/linked-list';
 import DoublyLinkedListNode from './DoublyLinkedListNode';
+import { comparator as utilsComparator } from '../../utils';
 
 export default class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
   private head: IDoublyLinkedListNode<T> | null = null;
   private tail: IDoublyLinkedListNode<T> | null = null;
-  private readonly comparator: LinkedListComparator<T>;
+  private readonly comparator: IComparator<T>;
 
-  constructor(comparator: LinkedListComparator<T>) {
+  constructor(comparator: IComparator<T> = utilsComparator) {
     this.comparator = comparator;
   }
 
@@ -69,7 +65,7 @@ export default class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     }
   }
 
-  public find(args: ILinkedListFindArgument<T>): IDoublyLinkedListNode<T> | null {
+  public find(args: CallbackArgs<T>): IDoublyLinkedListNode<T> | null {
     if (!this.head) return null;
     let currentNode: IDoublyLinkedListNode<T> | null = this.head;
     while (currentNode) {
@@ -111,7 +107,7 @@ export default class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return deletedHead;
   }
 
-  public forEach(callback: LinkedListFindCallback<T>): void {
+  public forEach(callback: BaseCallback<T>): void {
     let current = this.head;
     while (current) {
       callback(current.value);
@@ -133,7 +129,7 @@ export default class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return !this.head;
   }
 
-  public toString(callback?: LinkedListCallback<T>) {
+  public toString(callback?: BaseCallback<T>) {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 }

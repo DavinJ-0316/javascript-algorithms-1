@@ -1,5 +1,5 @@
+import { BaseCallback } from '../../types';
 import { IDoublyLinkedListNode } from '../../types/doubly-linked-list';
-import { LinkedListCallback } from '../../types/linked-list';
 
 export default class DoublyLinkedListNode<T> implements IDoublyLinkedListNode<T> {
   public value: T;
@@ -16,7 +16,7 @@ export default class DoublyLinkedListNode<T> implements IDoublyLinkedListNode<T>
     this.previous = previous;
   }
 
-  public toString(callback?: LinkedListCallback<T>): string {
+  public toString(callback?: BaseCallback<T>): string {
     return callback ? callback(this.value) : `${this.value}`;
   }
 }

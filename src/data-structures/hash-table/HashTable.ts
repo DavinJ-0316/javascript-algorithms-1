@@ -4,7 +4,7 @@ import LinkedList from '../linked-list/LinkedList';
 
 const DEFAULT_TABLE_SIZE = 32;
 
-export default class HashTable<T> implements IHashTable<T> {
+export default class HashTables<T> implements IHashTable<T> {
   private buckets: ILinkedList<IHashTableNode<T>>[];
   private keys: IKeys = {};
 

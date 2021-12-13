@@ -1,17 +1,9 @@
-export type LinkedListCallback<T> = (value: T) => string;
-export type LinkedListComparator<T> = (a: T, b: T) => number;
-export type LinkedListFindCallback<T> = (value: T) => void;
-
-export interface ILinkedListFindArgument<T> {
-  value?: T;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  callback?: any;
-}
+import { BaseCallback, CallbackArgs } from '../types';
 
 export interface ILinkedListNode<T> {
   value: T;
   next: ILinkedListNode<T> | null;
-  toString: (callback?: LinkedListCallback<T>) => string;
+  toString: (callback?: BaseCallback<T>) => string;
 }
 
 export interface ILinkedList<T> {
@@ -21,9 +13,9 @@ export interface ILinkedList<T> {
   delete: (value: T) => void;
   deleteHead: () => ILinkedListNode<T> | null;
   deleteTail: () => ILinkedListNode<T> | null;
-  find: (args: ILinkedListFindArgument<T>) => ILinkedListNode<T> | null;
-  forEach: (callback: LinkedListFindCallback<T>) => void;
+  find: (args: CallbackArgs<T>) => ILinkedListNode<T> | null;
+  forEach: (callback: BaseCallback<T>) => void;
   toArray: () => Array<ILinkedListNode<T>>;
   isEmpty: () => boolean;
-  toString: (callback?: LinkedListCallback<T>) => string;
+  toString: (callback?: BaseCallback<T>) => string;
 }
