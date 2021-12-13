@@ -1,13 +1,28 @@
 {
+  "env": {
+    "es6": true
+  },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": "latest"
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
   },
   "ignorePatterns": "**/*.md",
-  "extends": ["eslint:recommended", "google"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-airbnb"
+  ],
   "rules": {
-    "require-jsdoc": "off",
-    "object-curly-spacing": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "lines-between-class-members": "off"
   }
 }

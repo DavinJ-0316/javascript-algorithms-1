@@ -5,6 +5,7 @@ export default class LinkedList {
     this.head = null;
     this.tail = null;
     this.comparator = comparator;
+    console.log('sdfsf')
   }
 
   peek() {
