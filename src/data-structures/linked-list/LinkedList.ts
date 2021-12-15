@@ -1,20 +1,14 @@
 import LinkedListNode from './LinkedListNode';
-import {
-  ILinkedList,
-  ILinkedListNode,
-  LinkedListComparator,
-  ILinkedListFindArgument,
-  LinkedListCallback,
-  LinkedListFindCallback,
-} from '../../types/linked-list';
+import { ILinkedList, ILinkedListNode } from '../../types/linked-list';
+import { BaseCallback, CallbackArgs, IComparator } from '../../types';
+import { comparator as utilsComparator } from '../../utils';
 
 export default class LinkedList<T> implements ILinkedList<T> {
   private head: ILinkedListNode<T> | null = null;
   private tail: ILinkedListNode<T> | null = null;
-  private readonly comparator: LinkedListComparator<T>;
+  private readonly comparator: IComparator<T>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(comparator: LinkedListComparator<T> = (a: any, b: any) => a - b) {
+  constructor(comparator: IComparator<T> = utilsComparator) {
     this.comparator = comparator;
   }
 
@@ -94,7 +88,7 @@ export default class LinkedList<T> implements ILinkedList<T> {
     return deleteTail;
   }
 
-  public find(args: ILinkedListFindArgument<T>): ILinkedListNode<T> | null {
+  public find(args: CallbackArgs<T>): ILinkedListNode<T> | null {
     if (!this.head) return null;
 
     let current: ILinkedListNode<T> | null = this.head;
@@ -111,7 +105,7 @@ export default class LinkedList<T> implements ILinkedList<T> {
     return null;
   }
 
-  public forEach(callback: LinkedListFindCallback<T>): void {
+  public forEach(callback: BaseCallback<T>): void {
     let current = this.head;
     while (current) {
       callback(current.value);
@@ -135,7 +129,7 @@ export default class LinkedList<T> implements ILinkedList<T> {
     return !this.head;
   }
 
-  public toString(callback?: LinkedListCallback<T>): string {
+  public toString(callback?: BaseCallback<T>): string {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 }

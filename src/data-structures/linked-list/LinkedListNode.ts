@@ -1,4 +1,5 @@
-import { ILinkedListNode, LinkedListCallback } from '../../types/linked-list';
+import { BaseCallback } from '../../types';
+import { ILinkedListNode } from '../../types/linked-list';
 
 export default class LinkedListNode<T> implements ILinkedListNode<T> {
   public value: T;
@@ -9,7 +10,7 @@ export default class LinkedListNode<T> implements ILinkedListNode<T> {
     this.next = next;
   }
 
-  public toString(callback?: LinkedListCallback<T>): string {
+  public toString(callback?: BaseCallback<T>): string {
     return callback ? callback(this.value) : `${this.value}`;
   }
 }

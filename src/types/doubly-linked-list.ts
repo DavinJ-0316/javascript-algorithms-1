@@ -1,10 +1,10 @@
-import { ILinkedListFindArgument, LinkedListCallback, LinkedListFindCallback } from './linked-list';
+import { BaseCallback, CallbackArgs } from '../types';
 
 export interface IDoublyLinkedListNode<T> {
   value: T;
   next: IDoublyLinkedListNode<T> | null;
   previous: IDoublyLinkedListNode<T> | null;
-  toString: (callback?: LinkedListCallback<T>) => string;
+  toString: (callback?: BaseCallback<T>) => string;
 }
 
 export interface IDoublyLinkedList<T> {
@@ -14,9 +14,9 @@ export interface IDoublyLinkedList<T> {
   delete: (value: T) => void;
   deleteHead: () => IDoublyLinkedListNode<T> | null;
   deleteTail: () => IDoublyLinkedListNode<T> | null;
-  find: (args: ILinkedListFindArgument<T>) => IDoublyLinkedListNode<T> | null;
-  forEach: (callback: LinkedListFindCallback<T>) => void;
+  find: (args: CallbackArgs<T>) => IDoublyLinkedListNode<T> | null;
+  forEach: (callback: BaseCallback<T>) => void;
   toArray: () => Array<IDoublyLinkedListNode<T>>;
   isEmpty: () => boolean;
-  toString: (callback?: LinkedListCallback<T>) => string;
+  toString: (callback?: BaseCallback<T>) => string;
 }
