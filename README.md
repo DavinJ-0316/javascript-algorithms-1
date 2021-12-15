@@ -14,9 +14,7 @@
 * `B` [Двунаправленный связный список](src/data-structures/doubly-linked-list)
 * `B` [Очередь](src/data-structures/queue)
 * `B` [Стек](src/data-structures/stack)
-* `A` [Деревья](src/data-structures/tree)
-  * `A` [Двоичное дерево поиска](src/data-structures/tree/binary-search-tree)
-* `A` [Граф](src/data-structures/graph) (ориентированный и неориентированный)
+* `B` [Хеш-табица](src/data-structures/hash-table)
 
 ## Алгоритмы
 
