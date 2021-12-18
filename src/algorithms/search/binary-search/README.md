@@ -1,4 +1,4 @@
-# Binary Search
+# Бинарный поиск
 
 В информатике бинарный поиск, также известный как полуинтервальный
 поиск, логарифмический поиск или двоичное дробление - это алгоритм поиска
@@ -12,12 +12,12 @@
 
 ![Binary Search](https://upload.wikimedia.org/wikipedia/commons/8/83/Binary_Search_Depiction.svg)
 
-## Complexity
+## Сложность
 
-** Временная сложность **: `O (log (n))` - поскольку мы разделяем область поиска на два для каждой
+**Временная сложность**: `O (log (n))` - поскольку мы разделяем область поиска на два для каждой
 следующей итерации.
 
-## References
+## Ссылкт
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Binary_search_algorithm)
 - [YouTube](https://www.youtube.com/watch?v=P3YID7liBug&index=29&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)

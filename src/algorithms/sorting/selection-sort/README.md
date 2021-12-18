@@ -1,4 +1,4 @@
-# Selection Sort
+# Сортировка выборкой
 
 Сортировка выборкой - это алгоритм сортировки, в частности
 сортировка сравнения на месте. Он имеет временную сложность O (n^2),
@@ -13,12 +13,12 @@
 
 ![Algorithm Visualization](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 
-## Complexity
+## Сложность
 
 | Name                  | Best            | Average             | Worst               | Memory    | Stable    | Comments  |
 | --------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |
 | **Selection sort**    | n<sup>2</sup>   | n<sup>2</sup>       | n<sup>2</sup>       | 1         | No        |           |
 
-## References
+## Ссылки
 
 [Wikipedia](https://en.wikipedia.org/wiki/Selection_sort)

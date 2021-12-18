@@ -1,4 +1,5 @@
-# Linear Search
+# Линейный поиск
+
 В информатике линейный поиск или последовательный поиск это
 метод поиска целевого значения в списке. Он последовательно
 проверяет каждый элемент списка на предмет целевого значения до тех пор, пока
@@ -8,12 +9,12 @@
 
 ![Linear Search](https://www.tutorialspoint.com/data_structures_algorithms/images/linear_search.gif)
 
-## Complexity
+## Сложность
 
-** Временная сложность **: `O (n)` - поскольку в худшем случае мы проверяем каждый элемент
+**Временная сложность**: `O (n)` - поскольку в худшем случае мы проверяем каждый элемент
 ровно один раз.
 
-## References
+## Ссылки
 - [Wikipedia](https://en.wikipedia.org/wiki/Linear_search)
 - [TutorialsPoint](https://www.tutorialspoint.com/data_structures_algorithms/linear_search_algorithm.htm)
 - [Youtube](https://www.youtube.com/watch?v=SGU9duLE30w)
