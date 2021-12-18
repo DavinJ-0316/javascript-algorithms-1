@@ -1,4 +1,4 @@
-# Merge Sort
+# Сортировка слиянием
 
 В информатике сортировка слиянием (также часто пишется
 mergesort) - эффективный, универсальный,
@@ -24,13 +24,13 @@ mergesort) - эффективный, универсальный,
 
 ![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/e/e6/Merge_sort_algorithm_diagram.svg)
 
-## Complexity
+## Сложность
 
 | Name                  | Best            | Average             | Worst               | Memory    | Stable    | Comments  |
 | --------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |
 | **Merge sort**        | n&nbsp;log(n)   | n&nbsp;log(n)       | n&nbsp;log(n)       | n         | Yes       |           |
 
-## References
+## Ссылки
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Merge_sort)
 - [YouTube](https://www.youtube.com/watch?v=KF2j-9iSf4Q&index=27&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)

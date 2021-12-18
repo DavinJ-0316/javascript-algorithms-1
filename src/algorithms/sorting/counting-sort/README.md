@@ -1,6 +1,6 @@
-# Counting Sort
+# Сортировка подсчётом
 
-В информатике ** сортировка с подсчетом ** - это алгоритм сортировки. Он работает
+В информатике **сортировка с подсчетом** - это алгоритм сортировки. Он работает
 подсчетом количества объектов, каждое из которых имеет отдельное значение ключа,
 и используя арифметику по этим подсчетам, чтобы определить позиции
 каждого ключевого значения в выходной последовательности. Его время работы
@@ -14,9 +14,9 @@
 Сортировка подсчётом работает лучше всего, когда диапазон чисел для каждого массива
 элементов очень маленький.
 
-## Algorithm
+## Алгоритм
 
-**Step I**
+**Шаг I**
 
 На первом этапе мы вычисляем количество всех элементов
 входной массив `A`. Затем сохраните результат в массиве счетчиков `C`.
@@ -24,7 +24,7 @@
 
 ![Counting Sort](https://3.bp.blogspot.com/-jJchly1BkTc/WLGqCFDdvCI/AAAAAAAAAHA/luljAlz2ptMndIZNH0KLTTuQMNsfzDeFQCLcB/s1600/CSortUpdatedStepI.gif)
 
-**Step II**
+**Шаг II**
 
 На втором этапе мы вычисляем, сколько элементов существует во входных данных.
 массив A, которые меньше или равны заданному индексу.
@@ -32,7 +32,7 @@
 
 ![Counting Sort](https://1.bp.blogspot.com/-1vFu-VIRa9Y/WLHGuZkdF3I/AAAAAAAAAHs/8jKu2dbQee4ap9xlVcNsILrclqw0UxAVACLcB/s1600/Step-II.png)
 
-**Step III**
+**Шаг III**
 
 На этом этапе мы помещаем элемент входного массива `A` в отсортированный
 позиции, используя построенный массив счетчиков `C`, то есть то, что
@@ -42,13 +42,13 @@
  
 ![Counting Sort](https://1.bp.blogspot.com/-xPqylngqASY/WLGq3p9n9vI/AAAAAAAAAHM/JHdtXAkJY8wYzDMBXxqarjmhpPhM0u8MACLcB/s1600/ResultArrayCS.gif)
 
-## Complexity
+## Сложность
 
 | Name                  | Best            | Average             | Worst               | Memory    | Stable    | Comments  |
 | --------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |
 | **Counting sort**     | n + r           | n + r               | n + r               | n + r     | Yes       | r - biggest number in array |
 
-## References
+## Ссылки
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Counting_sort)
 - [YouTube](https://www.youtube.com/watch?v=OKd534EWcdk&index=61&t=0s&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)

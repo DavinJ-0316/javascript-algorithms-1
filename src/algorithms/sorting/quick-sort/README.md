@@ -25,13 +25,13 @@
 
 ![Quicksort](https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif)
 
-## Complexity
+## Сложночть
 
 | Name                   | Best            | Average             | Worst               | Memory    | Stable    | Comments  |
 | ---------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |
 | **Быстрая сортировка** | n&nbsp;log(n)   | n&nbsp;log(n)       | n<sup>2</sup>       | log(n)    | No        |  Быстрая сортировка обычно выполняется на месте с пространством стека O (log (n)) |
 
-## References
+## Ссылки
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Quicksort)
 - [YouTube](https://www.youtube.com/watch?v=SLauY6PpjW4&index=28&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)
